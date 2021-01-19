@@ -4,12 +4,15 @@ function payment() {
     "key": "rzp_test_L5aaES5fAUkb2I",
     "amount": amt, // Example: 2000 paise = INR 20
     "name": "Tanuj Dey",
-  "handler": function (response) {
+    "handler": function (response) {
     console.log(response);
-      // AFTER TRANSACTION IS COMPLETE YOU WILL GET THE RESPONSE HERE.
+      if(response.razorpay_payment_id) {
+        alert("Payment Successful");
+        location.reload();
+      }
     },
   };
-  console.log(options);
+  // console.log(options);
   var propay = new Razorpay(options);
-propay.open();
+  propay.open();
 }
